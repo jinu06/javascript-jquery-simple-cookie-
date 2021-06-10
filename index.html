@@ -73,27 +73,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     -->
     <script>
-              jQuery(document).ready(function ($) {
+      jQuery(document).ready(function ($) {
+        if (document.cookie.indexOf("accepted_cookies=") < 0) {
+          $(".cookie-overlay").removeClass("d-none").addClass("d-block");
+        }
 
-      if (document.cookie.indexOf("accepted_cookies=") < 0) {
-          $('.cookie-overlay').removeClass('d-none').addClass('d-block');
-      }
-
-      $('.accept-cookies').on('click', function() {
-          console.log('clicked')
+        $(".accept-cookies").on("click", function () {
           var date = new Date();
-          date.setTime(date.getTime() + (24* 30* 60 * 60 * 1000));
+          date.setTime(date.getTime() + 24 * 30 * 60 * 60 * 1000);
           var expiryDate = "expires=" + date.toUTCString();
-         var c= document.cookie = "accepted_cookies=yes;" + expiryDate + "; path=/";
-          $('.cookie-overlay').removeClass('d-block').addClass('d-none');
-          console.log(c);
-
-      })
-      // expand depending on your needs
-      $('.close-cookies').on('click', function() {
-          $('.cookie-overlay').removeClass('d-block').addClass('d-none');
+          document.cookie =
+            "accepted_cookies=yes;" + expiryDate + "; path=/; SameSite=Lax";
+          $(".cookie-overlay").removeClass("d-block").addClass("d-none");
+        });
+        // expand depending on your needs
+        $(".close-cookies").on("click", function () {
+          $(".cookie-overlay").removeClass("d-block").addClass("d-none");
+        });
       });
-    });
     </script>
   </body>
 </html>
