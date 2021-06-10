@@ -83,7 +83,7 @@
           date.setTime(date.getTime() + 24 * 30 * 60 * 60 * 1000);
           var expiryDate = "expires=" + date.toUTCString();
           document.cookie =
-            "accepted_cookies=yes;" + expiryDate + "; path=/; SameSite=Lax";
+            "accepted_cookies=yes;" + expiryDate + "; path=/;  SameSite=Strict";
           $(".cookie-overlay").removeClass("d-block").addClass("d-none");
         });
         // expand depending on your needs
